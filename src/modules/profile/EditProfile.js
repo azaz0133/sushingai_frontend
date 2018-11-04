@@ -9,6 +9,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import './style.css'
 import axios from 'axios'
+import constants from '../../constants';
 
 const EditCategory = ({
     handleInput,user,handlesubmit
@@ -47,7 +48,7 @@ export default compose(
                 address: Address
             }
             console.log(user.id)
-                    axios.put(`http://localhost:9001/api/users/edit/${user.id}`,body)
+                    axios.put(`${constants.API}/users/edit/${user.id}`,body)
                       .then( ({data})  => {
                           if(data)
                           window.location.href = '/profile'

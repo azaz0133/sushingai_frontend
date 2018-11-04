@@ -21,6 +21,7 @@ import { translate } from 'react-i18next'
 import i18n from '../../../i18n'
 import { saveSession,deleteSession } from '../../../redux/action/user' 
 import '../style.css'
+import constants from '../../../constants';
 
 const LoginSignin = styled.button `
     background-color: Transparent;
@@ -112,7 +113,7 @@ lifecycle({
     componentDidMount( deleteUser ){
         if(auth.getToken()){
         const { setAdmin } = this.props
-          axios.post(`http://localhost:9001/api/users/profile`,{},
+          axios.post(`${constants.API}/users/profile`,{},
           { headers: { Authorization: auth.getToken() } })
             .then( ({data:{user}})  => {
                 setAdmin(user)

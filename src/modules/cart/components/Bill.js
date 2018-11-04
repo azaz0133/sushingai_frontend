@@ -10,6 +10,7 @@ import {
 import BillTemplate from './BillTemplate'
 import {connect} from 'react-redux'
 import Axios from 'axios';
+import constant from '../../../constants'
 const Bill =({
     products,bill
 }) => (
@@ -29,7 +30,7 @@ export default compose(
     ),
     lifecycle({
         componentDidMount(){
-            Axios.get(`http://localhost:9001/api/bills/query/${this.props.billId['billId']}`).then( ({data}) =>{
+            Axios.get(`${constant.API}/bills/query/${this.props.billId['billId']}`).then( ({data}) =>{
                const bill =  data['Bill'][0]
                 this.props.setProducts(bill["lists"])
                 this.props.setBill({

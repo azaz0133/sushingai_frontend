@@ -10,6 +10,7 @@ import Axios from 'axios'
 import CONSTANTS from '../../../constants'
 import { createCategory as Create } from '../../../redux/action'
 import FileBase64 from 'react-file-base64'
+import constants from '../../../constants';
 
 const CreateCategory = ({
  name,detail,setDetail,setName,handleInput,createCategory,upPic
@@ -63,7 +64,7 @@ export default compose(
     withState('nameOfPic','setNameOfPic',""),
     withHandlers({
         upPic: ({setLocationPic}) => file => {
-            Axios.post('http://localhost:9001/api/categories/upload',{uri:file[0].base64}).then( ({data:{url}}) =>{
+            Axios.post(`${constants.API}/categories/upload`,{uri:file[0].base64}).then( ({data:{url}}) =>{
                 setLocationPic(url)
              }).catch(err => console.log(err))
         },

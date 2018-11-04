@@ -24,6 +24,7 @@ import { compose } from 'redux';
 import {
   connect
 } from 'react-redux'
+import constants from '../../constants';
 
 const SignUp = ({
  upPic,modal,toggle,closeModal,first_name, last_name, email, tel, username, password, address,Onchange,handleSubmit
@@ -130,7 +131,7 @@ export default compose(
  withHandlers({
 
   upPic : ({setFname,setLname,setAddress}) => file => {
-    axios.post('http://localhost:9001/api/users/ocr',{uri:file[0].base64}).then( ({data:{users}}) =>{
+    axios.post(`${constants.API}/users/ocr`,{uri:file[0].base64}).then( ({data:{users}}) =>{
       const {firstNameEn,lastNameEn,address} = users
       setAddress(address)
       setFname(firstNameEn)
