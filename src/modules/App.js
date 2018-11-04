@@ -64,9 +64,9 @@ const App= (user) => (
         </Header>
         </div>
         <div className='container' style={{height:"30px",backgroundColor:"#4E8586"}}></div>
-        <Devtool />
+        {/* <Devtool /> */}
         <Footer/>
-        <Chat />
+        {/* <Chat /> */}
     </div>
 )
 
